@@ -1,0 +1,10 @@
+{
+    "type": "object",
+    "$id": "schema:user:create:response:signUp",
+    "required": ["success", "message"],
+    "additionalProperties": false,
+    "properties": {
+        "message":{"type":"string"},
+        "success":{"type":"boolean"}
+    }
+}

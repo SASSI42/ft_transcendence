@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .link-hover-effect {
+    @apply transition duration-150 ease-in-out hover:text-accent;
+  }
+  
+  .primary-hover {
+	  @apply transition duration-150 ease-in-out hover:brightness-90;
+  }
+  
+  .secondary-hover {
+	  @apply transition duration-150 ease-in-out hover:border-accent hover:bg-gray-700;
+  }
+
+  .primary-button {
+    @apply bg-accent text-bgsecondary primary-hover text-h5 font-bebas-neue cursor-pointer rounded-md disabled:opacity-50;
+  }
+
+  .secondary-button {
+	  @apply px-5 py-3 leading-none border text-h4body rounded-md secondary-hover border-bgsecondary bg-bgsecondary;
+  }
+
+  .input-field {
+	  @apply bg-primary outline-none text-h5 focus:ring-2 focus:ring-accent/60 focus:border-accent;
+  }
+
+  .error-span {
+	  @apply text-red text-h5body text-left p-2 text-wrap;
+  }
+
+  .submission-error {
+	  @apply error-span bg-red/15 max-w-[280px] -mt-1 mb-3 rounded-lg;
+  }
+
+  .submission-success {
+	  @apply text-green text-h5body text-left p-2 text-wrap bg-green/15 max-w-[280px] -mt-1 mb-3 rounded-lg;
+  }
+}

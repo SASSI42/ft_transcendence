@@ -1,0 +1,50 @@
+{
+  "name": "fastify-ts-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@fastify/cookie": "^11.0.2",
+    "@fastify/cors": "^11.2.0",
+    "@fastify/jwt": "^10.0.0",
+    "@fastify/multipart": "^9.3.0",
+    "@fastify/oauth2": "^8.1.2",
+    "@fastify/passport": "^3.0.2",
+    "better-sqlite3": "^12.5.0",
+    "date-fns": "^4.1.0",
+    "fastify": "^5.6.2",
+    "fastify-metrics": "^12.1.0",
+    "fastify-plugin": "^5.1.0",
+    "helmet": "^8.1.0",
+    "nodemailer": "^7.0.12",
+    "oauth4webapi": "^3.8.3",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-oauth2": "^1.8.0",
+    "pino-socket": "^7.4.0",
+    "pipeline": "^0.1.3",
+    "simple-oauth2": "^5.1.0",
+    "socket.io": "^4.8.3",
+    "uuid": "^13.0.0",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@jest/globals": "^30.2.0",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^25.0.3",
+    "@types/nodemailer": "^7.0.4",
+    "@types/passport-google-oauth20": "^2.0.17",
+    "nodemon": "^3.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

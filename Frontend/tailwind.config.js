@@ -1,0 +1,65 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        bgprimary: "#22282A",
+        bgsecondary: "#394247",
+        accent: "#66E8FA",
+        primary: "#D5E1E7",
+        secondary: "#B1C5CE",
+        leaderboadgold: "#C9A227",
+        leaderboadsilver: "#A1A7AB",
+        leaderboadbronze: "#A97142",
+        green: "#4C8C6D",
+        red: "#A44C4C",
+        blue: "#3B82F6",
+        online: "#4ade80",
+      },
+      fontSize: {
+        h1body: "1.5625rem",
+        h3body: "1.25rem",
+        h4body: "0.9375rem",
+        h5body: "0.75rem",
+        h6body: "0.625rem",
+        h7body: "0.5rem",
+        h1: "2.5rem",
+        h2: "2.1875rem",
+        h3: "1.875rem",
+        "h3-5": "1.5625rem",
+        h4: "1.25rem",
+        h5: "0.9375rem",
+        h6: "0.75rem",
+        h7: "0.625rem",
+      },
+      fontWeight: {
+        h1body: 400,
+        h3body: 400,
+        h4body: 400,
+        h5body: 400,
+        h6body: 400,
+        h7body: 400,
+        h1: 400,
+        h2: 400,
+        h3: 400,
+        "h3-5": 400,
+        h4: 400,
+        h5: 400,
+        h6: 400,
+        h7: 400,
+      },
+      fontFamily: {
+        roboto: "Roboto",
+        "bebas-neue": "Bebas Neue",
+      },
+      backgroundImage: {
+        primaryGradient:
+          "linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), radial-gradient(50% 50% at 50% 50%, #394247 0%, #22282A 100%)",
+        secondaryGradient:
+          "linear-gradient(111.93deg, #394247 -20.03%, #22282A 90.28%)",
+      },
+    },
+  },
+  plugins: [],
+};

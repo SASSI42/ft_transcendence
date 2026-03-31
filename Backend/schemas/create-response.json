@@ -1,0 +1,21 @@
+{
+    "type": "object",
+    "$id": "schema:user:create:response",
+    "required": ["status", "success", "message", "user", "avatar", "twoFactor"],
+    "additionalProperties": false,
+    "properties": {
+        "status":{"type":"boolean"},
+        "message":{"type":"string"},
+        "success":{"type":"boolean"},
+        "user":{
+            "type":"object",
+            "required": ["id", "username", "email"],
+            "properties":{
+            "id": {"type": "string"},
+            "username":{"type" :"string"},
+            "email":{"type" :"string"}
+            }},
+            "avatar":{"type":"string"},
+            "twoFactor":{"type":"boolean"}
+    }
+}

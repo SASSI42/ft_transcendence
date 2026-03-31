@@ -1,0 +1,10 @@
+groups:
+  - name: backend_alerts
+    rules:
+      - alert: BackendDown
+        expr: up{job="fastify-backend"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Backend is down on {{ $labels.instance }}"

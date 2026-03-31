@@ -1,0 +1,115 @@
+services:
+  frontend:
+    build: ./Frontend
+    image: frontend_image:v1
+    container_name: frontend
+    ports:
+      - 3000:443
+    networks:
+      - app_network
+    depends_on:
+      - backend
+  backend:
+    build: ./Backend
+    image: backend_image:v1
+    container_name: backend
+    env_file:
+      - .env
+    networks:
+      - app_network
+    depends_on:
+      - logstash
+
+
+  prometheus:
+    build: ./prometheus
+    image: prometheus_custom:latest
+    container_name: prometheus
+    volumes:
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.retention.time=30d'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - app_network
+    depends_on:
+      - cadvisor
+
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    env_file:
+      - .env
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - app_network
+
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    container_name: cadvisor
+    privileged: true
+    volumes:
+      - /:/rootfs:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /etc/machine-id:/etc/machine-id:ro
+    networks:
+      - app_network
+    
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.11.1
+    container_name: elasticsearch
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+    networks:
+      - app_network
+    volumes:
+      - es_data:/usr/share/elasticsearch/data
+
+  logstash:
+    build: ./logstash
+    image: logstash
+    container_name: logstash
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    networks:
+      - app_network
+    depends_on:
+      - elasticsearch
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.11.1
+    container_name: kibana
+    env_file:
+      - .env
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+    networks:
+      - app_network
+    depends_on:
+      - elasticsearch
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  es_data:
+  prometheus_data:
+  grafana_data:
+  logstash-pipeline:
